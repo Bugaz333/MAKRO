@@ -1,0 +1,91 @@
+﻿@import "tailwindcss";
+
+@layer base {
+  :root {
+    --makro-navy: #001244;
+    --makro-cyan: #009FE3;
+    --makro-magenta: #E6007E;
+    --makro-yellow: #FFED00;
+    --makro-red: #E32619;
+    --makro-green: #00A843;
+    --makro-black: #0A0B0E;
+    --makro-paper: #FBFBFA;
+    --makro-border: #E5E5E0;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #FBFBFA;
+    color: #0A0B0E;
+    overflow-x: hidden;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background-color: #E6007E;
+    color: #FFFFFF;
+  }
+}
+
+.font-mono {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Fluid Marquee Animations */
+@keyframes marquee-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 32s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 32s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle print registration crosshair */
+.reg-mark {
+  position: relative;
+  width: 14px;
+  height: 14px;
+}
+.reg-mark::before, .reg-mark::after {
+  content: '';
+  position: absolute;
+  background-color: currentColor;
+}
+.reg-mark::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+.reg-mark::after {
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+/* Multiply Blend Mode for Authentic CMYK print overprinting */
+.blend-multiply {
+  mix-blend-mode: multiply;
+}
